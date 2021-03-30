@@ -1,0 +1,42 @@
+<div class="container d-flex flex-column align-items-center">
+  <h1 class="text-center">create-post</h1>
+  <form #myForm="ngForm" (ngSubmit)="create(myForm)">
+    <div class="label">
+      <label for="title">Title</label>
+      <em
+        *ngIf="
+          myForm.controls.title?.invalid &&
+          (myForm.controls.title?.touched || post)
+        "
+        >Required</em
+      >
+    </div>
+    <input required name="title" (ngModel)="(title)" id="title" type="text" />
+    <div class="label">
+      <label for="body">Body</label>
+      <em
+        *ngIf="
+          myForm.controls.body?.invalid &&
+          (myForm.controls.body?.touched || post)
+        "
+        >Required</em
+      >
+    </div>
+    <input
+      required
+      name="body"
+      (ngModel)="(body)"
+      id="body"
+      type="text"
+    /><br />
+    <button class="btn btn-success" [disabled]="myForm.invalid" type="submit">
+      <div
+        class="btn-post-txt"
+        (mouseenter)="post = true"
+        (mouseleave)="post = false"
+      >
+        Post
+      </div>
+    </button>
+  </form>
+</div>

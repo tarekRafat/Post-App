@@ -1,0 +1,17 @@
+form {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+.label {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+em {
+  color: rgb(245, 66, 66);
+}
+.btn-post-txt {
+  width: 100%;
+}

@@ -1,0 +1,5 @@
+.post {
+  box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0), 2px 5px 16px 0px #0b325e,
+    inset -1px 3px 8px 5px rgb(241, 240, 240);
+  margin: 1rem;
+}
