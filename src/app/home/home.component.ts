@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 import { Subscription } from "rxjs";
-import { IPost } from "../post";
+import { IPost } from "../model/post";
 import { HttpService } from "../shared/http.service";
 
 @Component({
@@ -23,5 +24,9 @@ export class HomeComponent implements OnInit {
 
   ngOnDestroy(): void {
     this.sub.unsubscribe();
+  }
+  delete(id, myPost) {
+    this.posts = this.posts.filter((post) => post !== myPost);
+    this.http.deletePost(id).subscribe();
   }
 }

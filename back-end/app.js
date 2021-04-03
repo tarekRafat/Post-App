@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const mysql = require("mysql");
 const cors = require("cors");
@@ -5,13 +6,13 @@ const bodyParser = require("body-parser");
 const routes = require("./routes/routes");
 
 const db = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "mysql01020",
-  database: "nodemysql",
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASS,
+  database: process.env.MYSQL_DB,
 });
 
-db.connect(err => {
+db.connect((err) => {
   if (err) throw err;
   console.log("mysql connected");
 });
@@ -23,7 +24,7 @@ app.use(bodyParser.json());
 
 app.use("/", routes);
 
-app.listen("3000", () => {
+app.listen(process.env.PORT, () => {
   console.log("Server is running on port 3000");
 });
 

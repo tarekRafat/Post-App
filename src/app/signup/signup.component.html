@@ -1,0 +1,50 @@
+<form #signupForm="ngForm" (ngSubmit)="signup(signupForm.value)">
+  <div class="mb-3">
+    <label for="firstName" class="form-label">First Name</label>
+    <input
+      required
+      name="first_name"
+      ngModel
+      class="form-control"
+      id="firstName"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="lastName" class="form-label">Last Name</label>
+    <input
+      required
+      name="last_name"
+      ngModel
+      class="form-control"
+      id="lastName"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="email" class="form-label">Email</label>
+    <input required name="email" ngModel class="form-control" id="email" />
+  </div>
+  <div class="mb-3">
+    <label for="phone" class="form-label">Phone Number</label>
+    <input
+      required
+      name="phone_number"
+      ngModel
+      class="form-control"
+      id="phone"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="password" class="form-label">Password</label>
+    <input
+      required
+      name="password"
+      ngModel
+      type="password"
+      class="form-control"
+      id="password"
+    />
+  </div>
+  <button type="submit" class="btn btn-primary" [disabled]="signupForm.invalid">
+    Sign Up
+  </button>
+</form>
