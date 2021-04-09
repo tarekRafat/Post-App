@@ -18,19 +18,23 @@ export class HttpService {
     });
   }
   getPost(id): Observable<[IPost]> {
-    return this.http.get<[IPost]>(`http://localhost:3000/posts/${id}`, {
+    return this.http.get<[IPost]>(`/users/${id}/posts`, {
       headers: new HttpHeaders({
         Accept: "application/json",
       }),
     });
   }
 
-  createPost(values): Observable<void> {
-    return this.http.post<void>("http://localhost:3000/posts", values, {
-      headers: new HttpHeaders({
-        "Content-Type": "application/json",
-      }),
-    });
+  createPost(values, id): Observable<void> {
+    return this.http.post<void>(
+      `http://localhost:3000/users/${id}/posts`,
+      values,
+      {
+        headers: new HttpHeaders({
+          "Content-Type": "application/json",
+        }),
+      }
+    );
   }
   updatePost(id, values): Observable<void> {
     return this.http.put<void>(`http://localhost:3000/posts/${id}`, values, {

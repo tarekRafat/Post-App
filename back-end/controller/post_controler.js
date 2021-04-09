@@ -12,7 +12,7 @@ module.exports = {
   getPost: (req, res) => {
     const app = require("../app");
     let { id } = req.params;
-    let query = `SELECT * FROM post WHERE post_id=${id}`;
+    let query = `SELECT * FROM post WHERE user_user_ID=${id}`;
     app.db.query(query, (err, results) => {
       if (err) {
         console.log(err);
@@ -24,9 +24,10 @@ module.exports = {
   createPost: (req, res) => {
     const app = require("../app");
     let { title, body } = req.body;
+    let { id } = req.params;
     console.log(req);
-    let query = "INSERT INTO post(title,body)  VALUES (?,?)";
-    app.db.query(query, [title, body], (err, results) => {
+    let query = "INSERT INTO post(title,body,user_user_ID)  VALUES (?,?,?) ";
+    app.db.query(query, [title, body, id], (err, results) => {
       if (err) throw err;
       res.status(201).send(results);
     });

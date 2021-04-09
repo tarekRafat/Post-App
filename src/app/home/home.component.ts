@@ -16,6 +16,7 @@ export class HomeComponent implements OnInit {
   constructor(private http: HttpService) {}
 
   ngOnInit() {
+    let userId = localStorage.getItem("userID");
     this.sub = this.http.getPosts().subscribe({
       next: (posts) => (this.posts = posts),
       error: (err) => (this.errorMessage = err),

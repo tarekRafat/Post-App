@@ -2,9 +2,19 @@
   <nav>
     <a [routerLink]="['/']">Home</a>
     <a [routerLink]="['/createpost']">create Post</a>
-    <a [routerLink]="['/signup']">Sign up</a>
-    <a [routerLink]="['/login']">Log in</a>
-  </nav>
 
+    <ng-container *ngIf="!authService.loggedIn(); else loggedIn">
+      <a [routerLink]="['/signup']">Sign up</a>
+      <a [routerLink]="['/login']">Log in</a>
+    </ng-container>
+
+    <ng-template #loggedIn>
+      <li class="nav-item">
+        <a (click)="authService.logout()" *ngIf="authService.loggedIn()"
+          >Log out</a
+        >
+      </li>
+    </ng-template>
+  </nav>
   <router-outlet></router-outlet>
 </div>

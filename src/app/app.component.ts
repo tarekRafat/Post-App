@@ -1,5 +1,6 @@
 import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+import { Component, OnChanges, OnInit, SimpleChanges } from "@angular/core";
+import { AuthService } from "./shared/auth.service";
 import { HttpService } from "./shared/http.service";
 
 @Component({
@@ -7,6 +8,7 @@ import { HttpService } from "./shared/http.service";
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.css"],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+  constructor(private authService: AuthService) {}
   ngOnInit(): void {}
 }

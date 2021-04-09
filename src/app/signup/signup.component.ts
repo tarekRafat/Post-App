@@ -10,16 +10,18 @@ import { AuthService } from "../shared/auth.service";
 })
 export class SignupComponent implements OnInit {
   currentUser: IUser;
+  errorMessage: string;
   constructor(private userAuth: AuthService, private router: Router) {}
 
   ngOnInit() {}
   signup(user: IUser) {
     this.userAuth.signupUser(user).subscribe(
-      (data) => {
+      (data: any) => {
+        localStorage.setItem("id_token", data.token);
         this.router.navigate(["/"]);
       },
       (err) => {
-        console.log(err);
+        this.errorMessage = err.error.message;
       }
     );
   }

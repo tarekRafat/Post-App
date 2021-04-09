@@ -5,3 +5,12 @@ nav {
   flex-direction: row;
   justify-content: space-around;
 }
+.nav-item {
+  list-style: none;
+  text-decoration: underline;
+  cursor: pointer;
+  color: #007bff;
+}
+.nav-item:hover {
+  color: blue;
+}

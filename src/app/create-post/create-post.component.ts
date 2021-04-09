@@ -37,15 +37,22 @@ export class CreatePostComponent implements OnInit {
     }
   }
 
-  create(newPost: IPost) {
-    if (!this.id) {
-      this.http.createPost(newPost).subscribe(() => {
-        this.routes.navigate(["/"]);
-      });
-    } else {
-      this.http.updatePost(this.id, newPost).subscribe(() => {
-        this.routes.navigate(["/"]);
-      });
-    }
+  create(newPost) {
+    const idToken = localStorage.getItem("id_token");
+    // console.log(idToken);
+    this.http.createPost(newPost, idToken).subscribe(
+      (result) => console.log(result),
+      (err) => console.log(err)
+    );
+    // if (!this.id) {
+    //   console.log(this.id);
+    //   this.http.createPost(newPost, this.id).subscribe(() => {
+    //     this.routes.navigate(["/"]);
+    //   });
+    // } else {
+    //   this.http.updatePost(this.id, newPost).subscribe(() => {
+    //     this.routes.navigate(["/"]);
+    //   });
+    // }
   }
 }
